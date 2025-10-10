@@ -153,32 +153,24 @@
         
         .anna-sprite {
             position: absolute;
-            width: 32px;
-            height: 48px;
-            background: linear-gradient(to bottom, #FFB6C1 40%, #ff0000 40%, #ff0000 70%, #333 70%);
-            border: 2px solid #000;
-            border-radius: 4px 4px 0 0;
+            width: 48px;             
+            height: 64px;
+            background-image: url('anna.png');  
+            background-size: contain;
+            background-repeat: no-repeat;
+            image-rendering: pixelated; 
             z-index: 8;
             display: none;
-            transition: all 0.1s;
         }
-        
-        .anna-sprite::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: #FDBCB4;
-            border-radius: 50%;
-            border: 1px solid #000;
-        }
-        
+
+        /* keep the gentle bob you already use when "walking" */
         .anna-sprite.walking {
             animation: walk 0.5s infinite alternate;
         }
+
+        /* remove the old box/face styling */
+        .anna-sprite::before { content: none; }
+
         
         @keyframes walk {
             0% { transform: translateY(0); }

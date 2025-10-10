@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>You've Got Mail at Our Farm 💌</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
@@ -568,102 +565,6 @@
           height: 30px;
         }
       }
-
-      /* Use dynamic viewport height on mobile, respect iOS safe areas */
-      html,
-      body {
-        height: 100%;
-      }
-
-      body {
-        padding-top: env(safe-area-inset-top);
-        padding-bottom: env(safe-area-inset-bottom);
-        padding-left: env(safe-area-inset-left);
-        padding-right: env(safe-area-inset-right);
-        -webkit-tap-highlight-color: transparent; /* no blue flash on tap */
-      }
-
-      /* Let the game fill the screen on phones */
-      .game-container {
-        width: 100vw;
-        height: 100dvh; /* handles mobile browser chrome changes */
-        max-height: none;
-        border-width: 4px; /* slightly slimmer border on small screens */
-      }
-
-      /* Scale core UI text with clamp() so it’s readable everywhere */
-      .instruction,
-      .letter-header,
-      .letter-content,
-      .choice-btn,
-      .start-title,
-      .subtitle {
-        font-size: clamp(10px, 2.4vw, 14px);
-      }
-
-      /* Bigger, thumb-friendly buttons */
-      .choice-btn,
-      .start-btn {
-        padding: clamp(12px, 3.5vw, 18px) clamp(18px, 5vw, 28px);
-      }
-
-      /* Make sprites scale nicely with screen size */
-      :root {
-        --sprite-w: clamp(40px, 9vw, 64px);
-        --sprite-h: clamp(54px, 12vw, 86px); /* ~ 4:3 ratio */
-      }
-
-      /* If you use image sprites (player/anna), size them responsively */
-      .player-sprite,
-      .anna-sprite {
-        width: var(--sprite-w);
-        height: var(--sprite-h);
-        image-rendering: pixelated;
-      }
-
-      /* Bouquet in Eggward’s hand: anchor relative to sprite size */
-      .flowers-in-hand {
-        /* these offsets work well for 48x64; now scale with variables */
-        left: calc(var(--sprite-w) * 0.7);
-        bottom: calc(var(--sprite-h) * 0.18);
-        font-size: clamp(16px, 3.8vw, 22px);
-      }
-
-      /* Make click/tap area around the mailbox easier to hit on mobile */
-      .click-area {
-        width: clamp(64px, 10vw, 96px);
-        height: clamp(64px, 10vw, 96px);
-      }
-
-      /* Start screen input sizing */
-      .date-input {
-        font-size: clamp(12px, 3.6vw, 16px);
-        padding: clamp(10px, 3vw, 14px) clamp(12px, 3.5vw, 16px);
-      }
-
-      /* Letter modal: breathe on small screens */
-      .letter-modal {
-        width: min(92vw, 560px);
-        padding: clamp(18px, 4vw, 35px);
-      }
-
-      /* Hide the desktop QR on phones (we’ll add it in step 4) */
-      @media (max-width: 768px) {
-        #qr {
-          display: none !important;
-        }
-        .game-container {
-          border: none;
-          border-radius: 0;
-        }
-      }
-
-      /* Make the "No" button dodge on touch too (bigger movement on mobile) */
-      @media (max-width: 480px) {
-        .choice-btn.no {
-          touch-action: manipulation;
-        }
-      }
     </style>
   </head>
   <body>
@@ -1058,32 +959,6 @@
           heart.style.animationDelay = Math.random() * 3 + "s";
           document.getElementById("celebration").appendChild(heart);
         }
-      }
-
-      document.addEventListener(
-        "touchend",
-        function (e) {
-          const t = e.target;
-          if (t.closest(".choice-btn, .start-btn, .click-area")) {
-            e.preventDefault();
-            t.click();
-          }
-        },
-        { passive: false }
-      );
-
-      // Recompute any position if the visual viewport changes (mobile address bar show/hide)
-      if (window.visualViewport) {
-        let rAF;
-        const onVV = () => {
-          cancelAnimationFrame(rAF);
-          rAF = requestAnimationFrame(() => {
-            // If you need to re-place UI on resize, you can do it here.
-            // Example: recalc mailbox glow offsets if you tie them to % -> pixels.
-          });
-        };
-        visualViewport.addEventListener("resize", onVV);
-        visualViewport.addEventListener("scroll", onVV);
       }
     </script>
   </body>

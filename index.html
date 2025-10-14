@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>You've Got Mail at Our Farm 💌</title>
+    <title>For Anna <3 </title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
@@ -47,7 +47,7 @@
         background-repeat: no-repeat;
       }
 
-      /* Misa the cat - Easter egg */
+
       .misa-cat {
         position: absolute;
         bottom: 15%;
@@ -175,12 +175,12 @@
         display: none;
       }
 
-      /* keep the gentle bob you already use when "walking" */
+
       .anna-sprite.walking {
         animation: walk 0.5s infinite alternate;
       }
 
-      /* remove the old box/face styling */
+
       .anna-sprite::before {
         content: none;
       }
@@ -197,7 +197,7 @@
         }
       }
 
-      /* Eggward player sprite - using actual image */
+
       .player-sprite {
         position: absolute;
         width: 48px;
@@ -237,18 +237,18 @@
         }
       }
 
-      /* Bouquet pinned near Eggward's right hand */
+
       .flowers-in-hand {
         position: absolute;
-        /* For a 48x64 sprite, this puts the bouquet by the right hand */
-        bottom: 12px; /* vertical anchor */
-        left: 34px; /* horizontal anchor (toward the right edge) */
-        font-size: 20px; /* smaller so it doesn't cover the head */
+
+        bottom: 12px;
+        left: 34px;
+        font-size: 20px;
         line-height: 1;
         display: none;
         transform-origin: bottom left;
         animation: sway 800ms ease-in-out infinite alternate;
-        pointer-events: none; /* never intercept clicks */
+        pointer-events: none;
       }
 
       .flowers-in-hand.show {
@@ -264,7 +264,7 @@
         }
       }
 
-      /* Flower giving animation */
+
       .flower-transfer {
         position: absolute;
         font-size: 32px;
@@ -536,7 +536,7 @@
         margin-bottom: 20px;
       }
 
-      /* Mobile responsiveness */
+
       @media (max-width: 768px) {
         .game-container {
           width: 100%;
@@ -593,10 +593,10 @@
     <div class="game-container">
       <div class="farm-scene" id="farmScene">
         <div class="instruction" id="instruction">
-          📬 Anna! Check the mailbox! You have mail! 📬
+          📬 Anna! Check the mailbox, You have mail! 📬
         </div>
 
-        <!-- Misa the cat easter egg -->
+
         <div class="misa-cat" onclick="petMisa()">
           <div class="cat-meow">Meow! 🐱</div>
         </div>
@@ -625,7 +625,7 @@
         <p style="margin-top: 15px">
           I treasure every moment we’ve shared so far — our good-night calls,
           watching you crush those pull-ups, spam musubi sunsets, after-work
-          hikes, baking apple pie together, helping you fill your car tires with
+          hikes, baking apple pie together, exchanging flowers, filling your car tires with
           air.<br />
           kissing implications... haha
         </p>
@@ -633,7 +633,7 @@
           The sun feels warmer with you.<br />
           The stars shine brighter with you.<br />
           The air seems fresher with you.<br />
-          Life is just better with you! :)
+          Life is better with you! :)
         </p>
         <p class="highlight">Will you be my girlfriend?</p>
       </div>
@@ -660,7 +660,7 @@
       function startStory() {
         document.getElementById("startScreen").classList.add("hide");
 
-        // Setup mailbox position and show elements
+
         setTimeout(() => {
           setupMailbox();
           showAnna();
@@ -670,9 +670,9 @@
       function placeMisaNearMailbox(mailboxLeftPct, mailboxBottomPct) {
         const misa = document.querySelector(".misa-cat");
 
-        // Offset Misa a tad to the left and slightly below the mailbox
-        const misaLeftPct = mailboxLeftPct + 6; // 6% right of mailbox
-        const misaBottomPct = mailboxBottomPct - 3; // 3% lower than mailbox
+
+        const misaLeftPct = mailboxLeftPct + 6;
+        const misaBottomPct = mailboxBottomPct - 3;
 
         misa.style.left = `${misaLeftPct}%`;
         misa.style.bottom = `${misaBottomPct}%`;
@@ -685,7 +685,7 @@
         const mailboxLeftPct = 78;
         const mailboxBottomPct = 53;
 
-        // ADJUST THESE VALUES to match your mailbox position
+
         mailboxClick.style.left = "75%";
         mailboxClick.style.bottom = "50%";
         mailboxClick.style.display = "block";
@@ -706,7 +706,7 @@
 
         document.getElementById("instruction").style.display = "block";
 
-        // Animate Anna walking to mailbox
+
         let position = 20;
         let verticalPos = 40;
         const walkInterval = setInterval(() => {
@@ -728,14 +728,14 @@
         const messages = [
           "Purrrr~",
           "Meow!",
-          "*happy cat*",
-          "😻",
+          "*happy neko*",
+          "im the cutest cat da world",
           "Misa loves you!",
         ];
         const meowDiv = document.querySelector(".cat-meow");
         meowDiv.textContent = messages[misaClicks % messages.length];
 
-        // Special message after 5 clicks
+
         if (misaClicks === 5) {
           meowDiv.textContent = "Misa approves! 💕";
         }
@@ -752,7 +752,7 @@
       function handleYes() {
         document.getElementById("letterModal").classList.remove("show");
 
-        // Show Eggward running up with flowers
+
         setTimeout(() => {
           const player = document.getElementById("player");
           const anna = document.getElementById("anna");
@@ -764,7 +764,7 @@
             player.classList.add("show", "running");
             document.getElementById("flowers").classList.add("show");
 
-            // Animate Eggward running to Anna
+
             let playerPos = 20;
             let playerVertPos = 40;
             const runInterval = setInterval(() => {
@@ -777,7 +777,7 @@
                 clearInterval(runInterval);
                 player.classList.remove("running");
 
-                // Give flowers animation
+
                 setTimeout(() => {
                   giveFlowers();
                 }, 500);
@@ -793,28 +793,28 @@
         const inHand = document.getElementById("flowers");
         const flowerTransfer = document.getElementById("flowerTransfer");
 
-        // Hide bouquet from Eggward's hand
+
         inHand.style.display = "none";
 
-        // Get actual screen coordinates for player hand and Anna
+
         const playerRect = player.getBoundingClientRect();
         const annaRect = anna.getBoundingClientRect();
 
-        // Roughly where Eggward's right hand is
+
         const handX = playerRect.left + playerRect.width * 0.75;
         const handY = playerRect.top + playerRect.height * 0.35;
 
-        // Roughly where Anna's hands/chest area is
+
         const annaX = annaRect.left + annaRect.width * 0.4;
         const annaY = annaRect.top + annaRect.height * 0.35;
 
-        // Place flower at Eggward's hand
+
         flowerTransfer.style.display = "block";
         flowerTransfer.style.left = `${handX}px`;
         flowerTransfer.style.top = `${handY}px`;
-        flowerTransfer.style.position = "fixed"; // keep it consistent
+        flowerTransfer.style.position = "fixed";
 
-        // Animate flying into Anna's hands
+
         const dx = annaX - handX;
         const dy = annaY - handY;
 
@@ -833,13 +833,13 @@
             fill: "forwards",
           }
         ).onfinish = () => {
-          // Hide the floating flower after arrival
+
           flowerTransfer.style.display = "none";
 
-          // Optional: briefly show flowers in Anna's hands
+
           showAnnaFlowers();
 
-          // Celebrate ❤️
+
           setTimeout(() => {
             document.getElementById("celebration").classList.add("show");
             createHearts();
@@ -847,7 +847,7 @@
         };
       }
 
-      // Temporary flower in Anna's hands
+
       function showAnnaFlowers() {
         const anna = document.getElementById("anna");
         const tempFlower = document.createElement("div");
@@ -863,7 +863,7 @@
 
         anna.appendChild(tempFlower);
 
-        // fade it out after a couple seconds
+
         setTimeout(() => {
           tempFlower.style.transition = "opacity 1s";
           tempFlower.style.opacity = 0;
@@ -884,7 +884,7 @@
           "I'll fill your tires for a life time tho 🥺",
         ];
 
-        // If she keeps clicking No, eventually only “Yes” works
+
         if (noClickCount < messages.length) {
           alert(messages[noClickCount - 1]);
         } else {
@@ -894,9 +894,9 @@
 
       const noBtn = document.querySelector(".choice-btn.no");
       noBtn.addEventListener("mouseover", () => {
-        // Move the button to a random nearby spot when hovered
-        const offsetX = (Math.random() - 0.5) * 200; // range: -100 to +100 px
-        const offsetY = (Math.random() - 0.5) * 100; // range: -50 to +50 px
+
+        const offsetX = (Math.random() - 0.5) * 200;
+        const offsetY = (Math.random() - 0.5) * 100;
         noBtn.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
       });
 
@@ -917,7 +917,7 @@
           : cleaned;
 
         if (asSlash === expected) {
-          // success → hide screen and start game
+
           error.style.opacity = 0;
           document.getElementById("startScreen").classList.add("hide");
           setTimeout(() => {
@@ -925,20 +925,20 @@
             showAnna();
           }, 1000);
         } else {
-          // error feedback
+
           error.textContent = "Hmm... try again (hint: it's today!)";
           error.style.opacity = 1;
 
           const screen = document.getElementById("startScreen");
           screen.classList.remove("shake");
-          void screen.offsetWidth; // restart animation
+          void screen.offsetWidth;
           screen.classList.add("shake");
           input.focus();
           input.select();
         }
       }
 
-      // Allow pressing Enter to submit
+
       document.addEventListener("DOMContentLoaded", () => {
         const input = document.getElementById("dateInput");
         input.addEventListener("keydown", (e) => {
